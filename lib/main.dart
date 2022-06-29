@@ -24,9 +24,9 @@ class _MyAppState extends State<MyApp> {
     'vegan': false,
     'vegetarian': false,
   };
-// fetching meals
+//! fetching meals
   List<Meal> _aviliableMeals = dUMMYMEALS;
-  //Manage the Fav list...
+  //!Manage the Fav list...
   List<Meal> _favoriteMeals = [];
   // -->
   void _setFilters(Map<String, bool> filterData) {
@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  //Manage add and remove favorite...
+  //!Manage add and remove favorite...
   void _toggleFavorite(String mealId) {
     final exisitingIndex =
         _favoriteMeals.indexWhere((meal) => meal.id == mealId);
@@ -69,7 +69,7 @@ class _MyAppState extends State<MyApp> {
     return _favoriteMeals.any((meal) => meal.id == id);
   }
 
-  // This widget is the root of your application.
+  //! This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

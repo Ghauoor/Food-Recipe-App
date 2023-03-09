@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
 //! fetching meals
   List<Meal> _aviliableMeals = dUMMYMEALS;
   //!Manage the Fav list...
-  List<Meal> _favoriteMeals = [];
+  final List<Meal> _favoriteMeals = [];
   // -->
   void _setFilters(Map<String, bool> filterData) {
     setState(() {
@@ -65,14 +65,16 @@ class _MyAppState extends State<MyApp> {
       );
     }
   }
-  bool _isMealFavorite(String id){
+
+  bool _isMealFavorite(String id) {
     return _favoriteMeals.any((meal) => meal.id == id);
   }
 
-  //! This widget is the root of your application.
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Meal Time',
       theme: ThemeData(
         colorScheme:
@@ -106,7 +108,10 @@ class _MyAppState extends State<MyApp> {
         '/': (ctx) => TabsScreen(favoriteMeals: _favoriteMeals),
         CategoryMealsScreen.routeName: (ctx) =>
             CategoryMealsScreen(_aviliableMeals),
-        MealDetailScreen.routeName: (ctx) =>  MealDetailScreen(togglefavorite: _toggleFavorite, isFavorite: _isMealFavorite,),
+        MealDetailScreen.routeName: (ctx) => MealDetailScreen(
+              togglefavorite: _toggleFavorite,
+              isFavorite: _isMealFavorite,
+            ),
         FiltersScreen.routeName: (ctx) => FiltersScreen(
               currentFilters: _filters,
               saveFilters: _setFilters,
